@@ -1,0 +1,55 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+.log
+logs/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Build files
+dist/
+build/
+coverage/
+.DS_Store
+
+# Database files
+*.sqlite
+*.sqlite-journal
+/data/db/
+mongodb/
+
+# OS and editor-specific files
+Thumbs.db
+*.swp
+*.swo
+*.swn
+*.bak
+*.orig
+*.tmp
+.idea/
+.vscode/
+*.iml
+
+# Debugging
+.nyc_output/
+coverage/
