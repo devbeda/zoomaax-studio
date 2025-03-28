@@ -8,6 +8,7 @@ import { Autoplay, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/autoplay";
+import { BsChevronLeft,BsChevronRight } from "react-icons/bs";
 
 import axios from "axios";
 import { baseUrl } from "../../Url";
@@ -19,6 +20,20 @@ function Home() {
   const navigate = useNavigate();
   const [contents, setContents] = useState([]);
   const [news, setNews] = useState([]);
+  const scrollRef = useRef(null); // Ref to control the scroll container
+
+  // Functions to scroll left and right smoothly
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -400, behavior: "smooth" }); // Adjust 400 to match card width
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 400, behavior: "smooth" }); // Adjust 400 to match card width
+    }
+  };
 
   useEffect(() => {
     const contents = async () => {
@@ -142,47 +157,48 @@ function Home() {
           </div>
 
           {/* News Grid */}
-          <div className=" w-full ">
+          <div className="w-full px-10 backdrop-blur-sm relative">
             {news.length === 0 ? (
               <p className="text-center text-gray-400">Loading news...</p>
             ) : (
-              <Swiper
-                modules={[Autoplay, EffectCoverflow]}
-                effect="coverflow"
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView="auto"
-                coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 2.5,
-                  slideShadows: true,
-                }}
-                autoplay={{
-                  delay: 2000,
-                  disableOnInteraction: false,
-                }}
-                loop={true}
-                className="w-full px-7 h-[500px]  "
-              >
-                {news.map((newsItem, index) => (
-                  <SwiperSlide key={index} className="w-[40%]">
-                    <div className="w-full h-full flex justify-center items-center hover:scale-110 duration-200 "
-                    onClick={() => navigate(`/news/${newsItem._id}`)}
+              <div className="relative">
+                {/* Scroll Container */}
+                <div
+                  ref={scrollRef}
+                  className="w-full h-[400px] flex overflow-x-scroll gap-5 scroll-smooth scrollbar-hide"
+                >
+                  {news.map((newsItem, index) => (
+                    <div
+                      key={index} // Moved key here for React
+                      className="w-[400px] h-[400px] flex-shrink-0" // Added flex-shrink-0 to prevent squishing
+                      onClick={() => navigate(`/news/${newsItem._id}`)}
                     >
                       <NewsCard news={newsItem} />
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                  ))}
+                </div>
+
+                {/* Optional Scroll Buttons */}
+                <button
+                  onClick={scrollLeft}
+                  className="absolute left-0 top-[40%] -translate-y-1/2  text-3xl active:scale-75 text-white p-2 rounded-full transition-all"
+                >
+                  <BsChevronLeft />{/* Left arrow */}
+                </button>
+                <button
+                  onClick={scrollRight}
+                  className="absolute right-0 top-[40%] -translate-y-1/2 text-3xl active:scale-75   text-white p-2 rounded-full transition-all"
+                >
+                  <BsChevronRight /> {/* Right arrow */}
+                </button>
+              </div>
             )}
 
             {/* "See More" Button */}
             {news.length > 6 && (
               <div className="w-full mt-8 flex justify-center">
                 <NavLink
-                  to={"/blogs"}
+                  to="/blogs"
                   className="border-2 text-white border-customOrange px-4 py-2 transition-all duration-300 hover:-translate-y-2 hover:text-white active:bg-customOrange active:text-white"
                 >
                   See More..

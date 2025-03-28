@@ -10,8 +10,8 @@ function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="bg-black font-heading-font text-xl">
-      <div className="fixed z-50 top-0 h-[90px] w-screen bg-gradient-to-b from-black to-transparent text-gray-400 font-[500px] flex items-center justify-between px-8 py-2">
+    <header className="bg-black font-heading-font  text-xl">
+      <div className="fixed z-50 top-0 h-[90px] w-screen bg-gradient-to-b from-black/90 via-black/40     text-gray-400 font-[500px] flex items-center justify-between px-8 py-2">
         <Link to="/">
           <img className="h-20" src={logo} alt="Logo" />
         </Link>

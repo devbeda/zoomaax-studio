@@ -12,20 +12,20 @@ function NewsCard({ news }) {
   return (
     <div
       onClick={() => navigate(`/news/${news._id}`)}
-      className="border-2 rounded-lg border-customOrange h-auto md:w-auto w-[80%] shadow-lg cursor-pointer group hover:shadow-customHoverOrange flex  duration-200 text-gray-400 items-center gap-5 select-none"
+      className="w-[400px] h-[400px] hover:scale-105 duration-200"
     >
       <img
-        className=" bg-cover w-full md:h-[400px] rounded-lg "
-        loading="lazy"
+        className=" h-[320px] w-[400px]"
+        
         src={news.images[0]}
         alt=""
       />
-      <div className="absolute bottom-[3.1rem]  ">
-        <div className=" bg-gradient-to-tr from-black via-transparent to-transparent flex flex-col rounded-b-lg   w-[60vw] z-40 px-4 ">
-          <h1 className="font-bold text-xs md:text-base font-sideheading-font tracking-wider group-hover:text-white">
+      <div className="h-[80px]  text-white text-center ">
+        <div className=" ">
+          <h1 className="text-lg font-bold">
             {truncateTitle(news.title)}
           </h1>
-          <p className="font-para-font text-xs md:text-sm text-gray-500">
+          <p className="text-gray-400 text-sm">
             {new Date(news.createdAt).toLocaleDateString()}
           </p>
         </div>
