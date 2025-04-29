@@ -12,7 +12,7 @@ const app = express()
 
 app.use(
     cors({
-        origin:["https://zoomaax-studio.vercel.app/", "http://localhost:5174"],
+        origin:"https://zoomaax-studio.vercel.app/",
         credentials:true
     })
 )
