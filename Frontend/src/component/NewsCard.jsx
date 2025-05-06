@@ -19,6 +19,7 @@ function NewsCard({ news }) {
         
         src={news.images[0]}
         alt=""
+        loading="lazy"
       />
       <div className="h-[80px]  text-white text-center ">
         <div className=" ">
