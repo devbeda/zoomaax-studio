@@ -8,6 +8,7 @@ function Card({ content }) {
           className="h-auto w-full object-cover rounded-lg bg-cover"
           src={content.thumbnail}
           alt=""
+          loading="lazy"
         />
       </div>
       <div className="h-[70px] flex flex-col justify-center items-center">
