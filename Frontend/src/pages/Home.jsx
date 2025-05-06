@@ -82,6 +82,7 @@ function Home() {
           className="w-full object-cover h-[500px] md:h-[800px] sm:blur-[6px] "
           src={hero_Image}
           alt=""
+          loading="lazy"
         />
       </div>
       <div className=" hidden sm:flex sm:top-[26vh] md:top-[25vh] left-[5vw] sm:text-[2.5rem] md:text-[3rem] lg:text-[5rem] absolute z-30   text-center font-para-font font-semibold ">
